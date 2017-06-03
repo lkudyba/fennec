@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170602190521) do
+ActiveRecord::Schema.define(version: 20170603101822) do
 
   create_table "categories", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "name"
@@ -21,7 +21,7 @@ ActiveRecord::Schema.define(version: 20170602190521) do
   create_table "expenses", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.date "date"
     t.text "description"
-    t.decimal "value", precision: 10
+    t.decimal "value", precision: 10, scale: 2
     t.bigint "category_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

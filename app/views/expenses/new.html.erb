@@ -1,0 +1,20 @@
+<h1>New Expense</h1>
+
+<%= form_with(model: @new_expense) do |form| %>
+  <%= form.label(:description) %>
+  <%= form.text_field(:description) %>
+
+  </br>
+
+  <%= form.label(:value) %>
+  <%= form.number_field(:value, min: 0, step: 0.01) %>
+
+  </br>
+
+  <%= form.label(:category_id) %>
+  <%= form.select(:category_id, category_options) %>
+
+  </br>
+
+  <%= form.submit %>
+<% end %>
