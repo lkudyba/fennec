@@ -1,11 +1,11 @@
 class ExpensesController < ApplicationController
+  before_action :load_expense, only: %i[edit update destroy]
+
   def index
     @expenses = Expense.all
   end
 
-  def edit
-    @expense = Expense.find(params[:id])
-  end
+  def edit; end
 
   def new
     @expense = Expense.new(date: Date.today)
@@ -22,9 +22,15 @@ class ExpensesController < ApplicationController
   end
 
   def update
-    @expense = Expense.find(params[:id])
-
     if @expense.update(expense_params)
+      redirect_to expenses_path
+    else
+      render 'edit'
+    end
+  end
+
+  def destroy
+    if @expense.destroy
       redirect_to expenses_path
     else
       render 'edit'
@@ -35,5 +41,9 @@ class ExpensesController < ApplicationController
 
   def expense_params
     params.require(:expense).permit(:date, :description, :value)
+  end
+
+  def load_expense
+    @expense = Expense.find(params[:id])
   end
 end

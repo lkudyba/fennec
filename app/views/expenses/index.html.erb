@@ -12,7 +12,10 @@
       <td><%= expense.date %></td>
       <td><%= expense.description %></td>
       <td><%= expense.value %></td>
-      <td><%= link_to('Edit', edit_expense_path(expense)) %></td>
+      <td>
+        <%= link_to('Edit', edit_expense_path(expense)) %>
+        <%= link_to('Delete', expense, method: :delete) %>
+      </td>
     </tr>
   <% end %>
 </table>
