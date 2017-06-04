@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
-  get 'expenses/index'
+  resources :expenses, only: %i[index new create]
+
   root 'expenses#index'
 end
