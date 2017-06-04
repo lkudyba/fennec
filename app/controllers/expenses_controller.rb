@@ -3,6 +3,10 @@ class ExpensesController < ApplicationController
     @expenses = Expense.all
   end
 
+  def edit
+    @expense = Expense.find(params[:id])
+  end
+
   def new
     @expense = Expense.new(date: Date.today)
   end
@@ -14,6 +18,16 @@ class ExpensesController < ApplicationController
       redirect_to expenses_path
     else
       render 'new'
+    end
+  end
+
+  def update
+    @expense = Expense.find(params[:id])
+
+    if @expense.update(expense_params)
+      redirect_to expenses_path
+    else
+      render 'edit'
     end
   end
 

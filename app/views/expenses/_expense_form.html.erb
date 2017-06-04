@@ -1,0 +1,14 @@
+<%= form_for(@expense) do |form| %>
+  <%= render partial: 'errors', object: @expense.errors %>
+
+  <%= form.label(:date) %>
+  <%= form.date_field(:date) %>
+
+  <%= form.label(:description) %>
+  <%= form.text_field(:description) %>
+
+  <%= form.label(:value) %>
+  <%= form.number_field(:value, step: 0.01) %>
+
+  <%= form.submit %>
+<% end %>
